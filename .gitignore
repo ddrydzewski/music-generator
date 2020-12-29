@@ -49,6 +49,9 @@ node_modules/
 # vscode directories
 .vscode/
 
+# setting from vscode
+settings.json
+
 # Optional npm cache directory
 .npm
 
