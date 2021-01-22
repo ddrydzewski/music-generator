@@ -26,7 +26,6 @@ export const Generator = () => {
   };
 
   const predict = async () => {
-    console.log(startText + "tako w srodku");
     const model = await tf.loadLayersModel("http://localhost:8080/model.json");
     if (model) {
       for (let index = 0; index < musicLenght; index++) {
@@ -45,10 +44,8 @@ export const Generator = () => {
         const nextChar = chars[nextIndex];
 
         startText += nextChar;
-        console.log(startText);
       }
       setGenText(startText);
-      console.log(genText.toString());
     }
   };
 
