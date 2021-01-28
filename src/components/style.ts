@@ -6,7 +6,7 @@ export const NameLogo = styled.div`
   position: relative;
   font-size: 45px;
   margin-top: 3%;
-  font-family: sans-serif;
+  font-family: serif, cursive;
   text-align: justify;
   text-align-last: center;
 `;
