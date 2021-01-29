@@ -28,5 +28,5 @@ export async function predict(startText: string) : Promise<string> {
       TextFromClient += nextChar;
     }
   }
-  return TextFromClient.toString();
+  return TextFromClient;
 };
