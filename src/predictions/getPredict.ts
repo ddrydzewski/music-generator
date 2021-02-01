@@ -20,7 +20,7 @@ export async function predict(startText: string) : Promise<string> {
       i = 0;
       const input = sampled.toTensor();
       const preds = await model.predict(input);
-      const nextIndex = sample(preds, 0.8);
+      const nextIndex = sample(preds, settings.temperature);
       const nextChar = chars[nextIndex];
 
       startText += nextChar;
