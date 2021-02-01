@@ -5,6 +5,6 @@ export const postDataToApi = async (TextFromClient: string) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ TextFromClient }),
     };
-    await fetch("https://localhost:44305/api/values", requestOptions);
+    await fetch("https://convertermidi.azurewebsites.net/api/Values", requestOptions);
   }
 };

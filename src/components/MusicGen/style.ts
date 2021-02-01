@@ -1,6 +1,6 @@
-import { BodyText, Button, Container, styled } from "precise-ui";
+import styled from "styled-components";
 
-export const GenButton = styled(Button)`
+export const GenButton = styled.button`
   font-size: 40px;
   font-family: serif;
   text-align: justify;
@@ -11,17 +11,19 @@ export const GenButton = styled(Button)`
   color: black;
 `;
 
-export const LoadingText = styled(BodyText)`
+export const LoadingText = styled.div`
   font-size: 50px;
   font-family: serif;
-  margin-top: 10%;
+  width: 50%;
+  margin: auto;
+  margin-top: 5%;
   text-align: center;
 `;
 
-export const StyledContainer = styled(Container)`
-  position: fixed;
-  margin-top: 5%;
-  display: flex;
+export const StyledContainer = styled.div`
+  margin: auto;
+  margin-top: 2%;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;

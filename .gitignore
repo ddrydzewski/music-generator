@@ -79,3 +79,6 @@ settings.json
 
 notebooks
 build
+
+# github /workflows
+.github

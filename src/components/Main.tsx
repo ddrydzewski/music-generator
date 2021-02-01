@@ -5,7 +5,7 @@ import { CreditsText, NameLogo } from "./style";
 export const Main = () => {
   return (
     <>
-      <NameLogo>Music generator</NameLogo>
+      <NameLogo>Classical Music Generator</NameLogo>
       <Generator/>
       <CreditsText>By Dawid Rydzewski</CreditsText>
     </>

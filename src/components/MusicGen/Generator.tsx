@@ -18,8 +18,8 @@ export const Generator = () => {
     await afterPredict(TextFromClient);
   };
 
-  const afterPredict = (TextFromClient: string) => {
-    postDataToApi(TextFromClient).then(afterPostData).then(getDataFromApi);
+  const afterPredict = async (TextFromClient: string) => {
+    await postDataToApi(TextFromClient).then(getDataFromApi).then(afterPostData);
   };
 
   const afterPostData = () => {
@@ -34,10 +34,10 @@ export const Generator = () => {
         </>
       ) : (
         <>
+          <LoadingText>Generating music... Please wait</LoadingText>
           <StyledContainer>
             <Loader type="Oval" color="#88e354" height={100} width={100} />
           </StyledContainer>
-          <LoadingText>Generating music... Please wait</LoadingText>
         </>
       )}
     </div>

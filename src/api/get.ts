@@ -1,7 +1,7 @@
 export const getDataFromApi = async () => {
   setTimeout(() => {
     const response = {
-      file: "https://localhost:44305/api/values",
+      file: "https://convertermidi.azurewebsites.net/api/Values/download",
     };
     window.open(response.file);
   }, 100);

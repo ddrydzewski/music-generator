@@ -4,7 +4,7 @@ import { sample } from "./getSample";
 import { settings } from "../config/musicSettings";
 
 export async function predict(startText: string) : Promise<string> {
-  let TextFromClient: string = "";
+  let TextFromClient: string = startText;
   const model = await tf.loadLayersModel("lstm/model.json");
   if (model) {
     let i = 0;
@@ -20,7 +20,7 @@ export async function predict(startText: string) : Promise<string> {
       i = 0;
       const input = sampled.toTensor();
       const preds = await model.predict(input);
-      const nextIndex = sample(preds, 1.0);
+      const nextIndex = sample(preds, 0.8);
       const nextChar = chars[nextIndex];
 
       startText += nextChar;
