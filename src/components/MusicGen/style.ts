@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { makeStyles } from '@material-ui/core/styles';
 
 export const GenButton = styled.button`
   font-size: 40px;
@@ -21,9 +22,18 @@ export const LoadingText = styled.div`
 `;
 
 export const StyledContainer = styled.div`
+  font-size: 40px;
+  font-family: serif;
+  text-align: justify;
   margin: auto;
-  margin-top: 2%;
+  margin-top: 5%;
   justify-content: center;
   align-items: center;
   text-align: center;
 `;
+
+export const useStyles = makeStyles({
+  root: {
+    width: 300,
+  },
+});

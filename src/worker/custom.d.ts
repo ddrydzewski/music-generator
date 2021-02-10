@@ -3,6 +3,5 @@ declare module 'comlink-loader!*' {
       constructor();
       predictWithWebWorker(startText: string): Promise<string>;
     }
-  
     export = WebpackWorker;
   }
