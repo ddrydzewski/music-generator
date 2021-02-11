@@ -21,7 +21,6 @@ export const Generator = () => {
   const [timer, setTimer] = useState(0);
   const [temperature, setTemperature] = useState(1.0);
   const [musicLength, setMusicLength] = useState(500);
-  const instance = new Worker();
 
   useEffect(() => {
     let interval: any;
@@ -36,6 +35,7 @@ export const Generator = () => {
   }, [isActiveTimer, timer]);
 
   const handleGenButton = async () => {
+    const instance = new Worker();
     setEnableGen(false);
     toggleTimer();
     const startText = initStartText();
