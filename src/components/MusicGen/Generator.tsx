@@ -1,4 +1,9 @@
-import { GenButton, LoadingText, StyledContainer } from "./style";
+import {
+  DownloadButton,
+  GenButton,
+  LoadingText,
+  StyledContainer,
+} from "./style";
 import { useState } from "react";
 import { postDataToApi } from "../../api/post";
 import { getDataFromApi } from "../../api/get";
@@ -7,14 +12,16 @@ import Loader from "react-loader-spinner";
 import { initStartText } from "../../utils/initText";
 import React from "react";
 import { useEffect } from "react";
-
-const instance = new Worker();
+import { OptionsSliders } from "../Options/OptionsSliders";
 
 export const Generator = () => {
   const [enableGen, setEnableGen] = useState(true);
   const [enableDownload, setEnableDownload] = useState(false);
-  const [timer, setTimer] = useState(0);
   const [isActiveTimer, setIsActiveTimer] = useState(false);
+  const [timer, setTimer] = useState(0);
+  const [temperature, setTemperature] = useState(1.0);
+  const [musicLength, setMusicLength] = useState(500);
+  const instance = new Worker();
 
   useEffect(() => {
     let interval: any;
@@ -32,14 +39,16 @@ export const Generator = () => {
     setEnableGen(false);
     toggleTimer();
     const startText = initStartText();
-    const TextFromClient = await instance.predictWithWebWorker(startText);
+    const TextFromClient = await instance.predictWithWebWorker(
+      startText,
+      musicLength,
+      temperature
+    );
     await afterPredict(TextFromClient);
   };
 
   const afterPredict = async (TextFromClient: string) => {
-    await postDataToApi(TextFromClient)
-      .then(getDataFromApi)
-      .then(afterPostData);
+    await postDataToApi(TextFromClient).then(afterPostData);
   };
 
   const afterPostData = () => {
@@ -66,9 +75,13 @@ export const Generator = () => {
       {enableGen ? (
         <>
           <GenButton onClick={handleGenButton}>Generate music!</GenButton>
+          <OptionsSliders
+            setTemperature={setTemperature}
+            setMusicLength={setMusicLength}
+          />
           {enableDownload && (
             <>
-              <GenButton onClick={handleDownload}>Download</GenButton>
+              <DownloadButton onClick={handleDownload}>Download</DownloadButton>
               <StyledContainer style={{ fontSize: 20, margin: 2 }}>
                 Download here if your browser is blocking automatic downloads
               </StyledContainer>
@@ -79,9 +92,9 @@ export const Generator = () => {
         <>
           <LoadingText>Generating music... Please wait</LoadingText>
           <StyledContainer>
-            <Loader type="Oval" color="#88e354" height={100} width={100} />
+            <Loader type="Oval" color="#5755d9" height={100} width={100} />
           </StyledContainer>
-          <StyledContainer>Timer: {timer}s - About 60 - 120 s</StyledContainer>
+          <StyledContainer>Timer: {timer}s - depends on the length of music</StyledContainer>
         </>
       )}
     </div>

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { makeStyles } from '@material-ui/core/styles';
 
 export const GenButton = styled.button`
   font-size: 40px;
@@ -7,7 +6,18 @@ export const GenButton = styled.button`
   text-align: justify;
   display: flex;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 6%;
+  text-align: center;
+  color: black;
+`;
+
+export const DownloadButton = styled.button`
+  font-size: 25px;
+  font-family: serif;
+  text-align: justify;
+  display: flex;
+  margin: auto;
+  margin-top: 5%;
   text-align: center;
   color: black;
 `;
@@ -31,9 +41,3 @@ export const StyledContainer = styled.div`
   align-items: center;
   text-align: center;
 `;
-
-export const useStyles = makeStyles({
-  root: {
-    width: 300,
-  },
-});

@@ -3,12 +3,12 @@ import { chars } from "../files/charsData";
 import { sample } from "./getSample";
 import { settings } from "../config/musicSettings";
 
-export async function predict(startText: string) : Promise<string> {
+export async function predict(startText: string, musicLength: number, temperature: number) : Promise<string> {
   let TextFromClient: string = startText;
   const model = await tf.loadLayersModel("lstm/model.json");
   if (model) {
     let i = 0;
-    for (let index = 0; index < settings.musicLenght; index++) {
+    for (let index = 0; index < musicLength; index++) {
       const sampled = new tf.TensorBuffer(
         [1, settings.maxlen, chars.length],
         "float32"
@@ -20,7 +20,7 @@ export async function predict(startText: string) : Promise<string> {
         i = 0;
         const input = sampled.toTensor();
         const preds = await model.predict(input);
-        const nextIndex = sample(preds, settings.temperature);
+        const nextIndex = sample(preds, temperature);
         const nextChar = chars[nextIndex];
         
         startText += nextChar;
