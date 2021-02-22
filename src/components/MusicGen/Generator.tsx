@@ -54,6 +54,8 @@ export const Generator = () => {
   const afterPostData = () => {
     setEnableGen(true);
     setEnableDownload(true);
+    setMusicLength(500);
+    setTemperature(1.0);
     resetTimer();
   };
 
@@ -83,7 +85,7 @@ export const Generator = () => {
             <>
               <DownloadButton onClick={handleDownload}>Download</DownloadButton>
               <StyledContainer style={{ fontSize: 20, margin: 2 }}>
-                Download here if your browser is blocking automatic downloads
+                Download here generated music
               </StyledContainer>
             </>
           )}
@@ -94,7 +96,10 @@ export const Generator = () => {
           <StyledContainer>
             <Loader type="Oval" color="#5755d9" height={100} width={100} />
           </StyledContainer>
-          <StyledContainer>Timer: {timer}s - depends on the length of music</StyledContainer>
+          <StyledContainer>Timer: {timer}s</StyledContainer>
+          <StyledContainer style={{ fontSize: 25, margin: 5 }}>
+            Waiting time depends on the length of music and CPU power
+          </StyledContainer>
         </>
       )}
     </div>
